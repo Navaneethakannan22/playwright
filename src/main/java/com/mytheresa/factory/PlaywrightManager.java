@@ -8,11 +8,10 @@ import com.microsoft.playwright.Playwright;
 
 public class PlaywrightManager {
 
-    private static ThreadLocal<Browser> browserThreadLocal = new ThreadLocal<>();
-    private static ThreadLocal<BrowserContext> browserContextThreadLocal = new ThreadLocal<>();
-    private static ThreadLocal<Page> pageThreadLocal = new ThreadLocal<>();
-    private static ThreadLocal<Playwright> playwrightThreadLocal = new ThreadLocal<>();
-
+    private static final ThreadLocal<Browser> browserThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<BrowserContext> browserContextThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Page> pageThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<Playwright> playwrightThreadLocal = new ThreadLocal<>();
 
 
     public static Playwright getPlaywright() {
@@ -37,7 +36,7 @@ public class PlaywrightManager {
     }
 
     public static void setBrowser(Browser launch) {
-         browserThreadLocal.set(launch);
+        browserThreadLocal.set(launch);
     }
 
     public static void setBrowserContext(BrowserContext browserContext) {
@@ -45,7 +44,7 @@ public class PlaywrightManager {
     }
 
     public static void setPage(Page page) {
-       pageThreadLocal.set(page);
+        pageThreadLocal.set(page);
     }
 
 }

@@ -18,13 +18,13 @@ public class ListenerClass implements ITestListener, ISuiteListener {
     @Override
     public void onTestStart(ITestResult result) {
         ExtentReport.createTestNode(result.getName());
-        ExtentLogger.pass(result.getName() + "is started successfully");
+        ExtentLogger.pass(result.getName() + " test is started successfully");
 
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentLogger.pass(result.getName() + "is passed successfully");
+        ExtentLogger.pass(result.getName() + " test is passed successfully");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ListenerClass implements ITestListener, ISuiteListener {
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ExtentLogger.skip(result.getName() + "is skipped");
+        ExtentLogger.skip(result.getName() + " test is skipped");
     }
 
 

@@ -17,8 +17,8 @@ public final class ExtentReport {
         extent.attachReporter(spark);
 
         spark.config().setTheme(Theme.DARK);
-        spark.config().setDocumentTitle("FreeNow Test Report");
-        spark.config().setReportName("FreeNow API Automation Report");
+        spark.config().setDocumentTitle("Test Report");
+        spark.config().setReportName("Mytheresa Automation Report");
     }
 
     public static void getInstance() {

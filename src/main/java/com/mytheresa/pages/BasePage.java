@@ -1,5 +1,6 @@
 package com.mytheresa.pages;
 
+
 import static com.mytheresa.factory.PlaywrightManager.getPage;
 
 public class BasePage {

@@ -2,7 +2,7 @@ package com.mytheresa.reports;
 
 import com.aventstack.extentreports.ExtentTest;
 
-public class ExtendManager  {
+public class ExtendManager {
 
     private static final ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 

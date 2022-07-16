@@ -1,7 +1,6 @@
 package com.mytheresa.assertions;
 
 import com.microsoft.playwright.ElementHandle;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 
 import java.io.IOException;
@@ -38,7 +37,4 @@ public class HomePageAssertion {
         softAssertions.assertAll();
     }
 
-    public static void verifyMyOverview(boolean isDisplayed){
-        Assertions.assertThat(isDisplayed).isTrue();
-    }
 }

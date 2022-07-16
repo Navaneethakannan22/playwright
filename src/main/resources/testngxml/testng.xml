@@ -4,14 +4,14 @@
 <suite name="Mytheresa Regression PW Suite" thread-count = "2" parallel = "tests" verbose="4">
 
 	<listeners>
-		<listener class-name="com.mytheresa.reports.ListenerClass"></listener>
+		<listener class-name="com.mytheresa.reports.ListenerClass"/>
 	</listeners>
 
-	<test name="Mytheresa HomePage Test">
+<!--	<test name="Mytheresa HomePage Test">
 		<classes>
 			<class name="com.mytheresa.tests.HomePageTest" />
 		</classes>
-	</test>
+	</test>-->
 	
 	<test name="Mytheresa LoginPage Test">
 		<classes>

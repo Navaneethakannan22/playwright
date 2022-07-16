@@ -1,9 +1,8 @@
 package com.mytheresa.reports;
 
-public final class ExtentLogger {
+public class ExtentLogger {
 
     private ExtentLogger() {
-
     }
 
     public static void pass(String details) {
