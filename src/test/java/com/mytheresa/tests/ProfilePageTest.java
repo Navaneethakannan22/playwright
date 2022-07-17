@@ -1,5 +1,6 @@
 package com.mytheresa.tests;
 
+import static com.mytheresa.assertions.ProfilePageAssertion.*;
 import com.mytheresa.pages.LoginPage;
 import org.testng.annotations.Test;
 
@@ -8,6 +9,6 @@ public class ProfilePageTest extends BaseTest{
 
     @Test
     public void loginIntoApp() {
-     loginPage.doLogin();
+     verifyMyOverview(loginPage.doLogin().IsMyOverviewDisplayed());
     }
 }

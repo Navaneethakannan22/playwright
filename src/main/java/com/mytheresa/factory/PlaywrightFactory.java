@@ -1,18 +1,23 @@
 package com.mytheresa.factory;
 
+import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.mytheresa.utils.PropertyFileReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.awt.*;
 
 
 public class PlaywrightFactory {
-
+    private static final Logger logger = LoggerFactory.getLogger(PlaywrightFactory.class);
 
     public Page initializeBrowser() {
 
-        String browserName = PropertyFileReader.getPropertyValue("browser").trim();
-        System.out.println(browserName + " browser is launching...");
+        String browserName = System.getProperty("browser")==null?PropertyFileReader.getPropertyValue("browser").trim():System.getProperty("browser");
+        logger.info("launching" + browserName + " browser...");
 
         PlaywrightManager.setPlaywright(Playwright.create());
 
@@ -28,28 +33,27 @@ public class PlaywrightFactory {
                 PlaywrightManager.setBrowser(PlaywrightManager.getPlaywright().chromium().launch(new LaunchOptions().setHeadless(false).setChannel("chrome")));
                 break;
         }
-
-        PlaywrightManager.setBrowserContext(PlaywrightManager.getBrowser().newContext());
+        PlaywrightManager.setBrowserContext(PlaywrightManager.getBrowser().newContext(new Browser.NewContextOptions().setScreenSize(1920, 1800)));
+        PlaywrightManager.getBrowserContext().setDefaultNavigationTimeout(0);
         PlaywrightManager.setPage(PlaywrightManager.getBrowserContext().newPage());
 
-        String environment = PropertyFileReader.getPropertyValue("env").trim();
+        String environment = System.getProperty("env")==null?PropertyFileReader.getPropertyValue("env").trim():System.getProperty("env");
         switch (environment.toLowerCase()) {
             case "local":
-                PlaywrightManager.getPage().navigate("https://local.mytheresa.com/en-de/men.html");
+                PlaywrightManager.getPage().navigate(EnvironmentVariable.LOCAL_ENV);
                 break;
             case "qa":
-                PlaywrightManager.getPage().navigate("https://test.mytheresa.com/en-de/men.html");
+                PlaywrightManager.getPage().navigate(EnvironmentVariable.QA_ENV);
                 break;
             case "staging":
-                PlaywrightManager.getPage().navigate("https://staging.mytheresa.com/en-de/men.html");
+                PlaywrightManager.getPage().navigate(EnvironmentVariable.STAGING_ENV);
                 break;
 
             default:
-                PlaywrightManager.getPage().navigate("https://www.mytheresa.com/en-de/men.html");
+                PlaywrightManager.getPage().navigate(EnvironmentVariable.PRELIVE_ENV);
                 break;
         }
-
-        PlaywrightManager.getBrowserContext().setDefaultNavigationTimeout(60000);
+        logger.info("Navigated to the Url successfully");
         return PlaywrightManager.getPage();
 
     }

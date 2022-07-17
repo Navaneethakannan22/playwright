@@ -13,7 +13,6 @@ public class HomePageTest extends BaseTest {
     @Test
     public void shouldValidateAllLinks() {
         List<ElementHandle> allLinksInHomePage = homePage.getAllLinks();
-        System.out.println(allLinksInHomePage);
         validateAllLinksInHomepage(allLinksInHomePage);
     }
 

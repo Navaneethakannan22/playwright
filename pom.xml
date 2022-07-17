@@ -37,6 +37,12 @@
             <artifactId>assertj-core</artifactId>
             <version>3.23.1</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
 
     </dependencies>
     <build>
@@ -54,6 +60,18 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/main/resources/testngxml/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <systemProperties>
+                        <property>
+                            <name>env</name>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <value>${env}</value>
+                        </property>
+                        <property>
+                            <name>browser</name>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <value>${browser}</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
             </plugin>
 
